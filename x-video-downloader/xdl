@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Wrapper: chạy xdl.py bằng venv của dự án
+DIR="${0:A:h}"
+export SSL_CERT_FILE="$("$DIR/.venv/bin/python" -c 'import certifi;print(certifi.where())')"
+exec "$DIR/.venv/bin/python" "$DIR/xdl.py" "$@"

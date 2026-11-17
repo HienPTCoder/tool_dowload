@@ -1,0 +1,7 @@
+#!/bin/zsh
+# Chạy web local và mở trình duyệt: http://127.0.0.1:8777
+DIR="${0:A:h}"
+export SSL_CERT_FILE="$("$DIR/.venv/bin/python" -c 'import certifi;print(certifi.where())')"
+cd "$DIR"
+(sleep 1; open "http://127.0.0.1:8777") &
+exec "$DIR/.venv/bin/python" "$DIR/server.py"

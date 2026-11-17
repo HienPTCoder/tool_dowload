@@ -1,0 +1,10 @@
+#!/bin/zsh
+set -e
+cd "${0:A:h}"
+if [[ ! -x .venv/bin/python ]]; then
+  print "Chạy ./setup.command trước."
+  exit 1
+fi
+export SSL_CERT_FILE="$(.venv/bin/python -c 'import certifi; print(certifi.where())')"
+print "Mở http://127.0.0.1:8778 trong trình duyệt"
+exec .venv/bin/python server.py
